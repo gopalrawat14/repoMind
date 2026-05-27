@@ -1,0 +1,10 @@
+spec_version: "0.1.0"
+name: perf-reviewer
+version: 1.0.0
+description: >
+  Reviews PRs for performance regressions, N+1 queries,
+  algorithmic complexity issues, and optimization opportunities.
+model:
+  preferred: llama-3.3-70b-versatile
+skills:
+  - perf-analysis

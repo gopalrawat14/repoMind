@@ -1,0 +1,10 @@
+spec_version: "0.1.0"
+name: repomind-orchestrator
+version: 1.0.0
+description: >
+  Master orchestrator for RepoMind. Receives GitHub events,
+  analyzes context, and routes to the right specialist agent.
+model:
+  preferred: llama-3.3-70b-versatile
+skills:
+  - routing

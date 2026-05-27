@@ -1,0 +1,27 @@
+spec_version: "0.1.0"
+name: security-auditor
+version: 1.0.0
+description: >
+  Autonomous security code reviewer. Finds vulnerabilities,
+  insecure patterns, hardcoded secrets, and injection flaws.
+model:
+  preferred: llama-3.3-70b-versatile
+skills:
+  - vuln-scan
+compliance:
+  risk_tier: high
+  supervision:
+    human_in_the_loop: conditional
+    escalation_triggers:
+      - confidence_below: 0.8
+      - error_detected: true
+  recordkeeping:
+    audit_logging: true
+    log_format: structured_json
+    retention_period: 6y
+    log_contents:
+      - prompts_and_responses
+      - tool_calls
+      - decision_pathways
+      - timestamps
+    immutable: true

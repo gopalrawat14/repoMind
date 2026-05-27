@@ -1,0 +1,10 @@
+spec_version: "0.1.0"
+name: doc-writer
+version: 1.0.0
+description: >
+  Writes missing documentation for new code in PRs.
+  Generates docstrings, README updates, and CHANGELOG entries.
+model:
+  preferred: llama-3.3-70b-versatile
+skills:
+  - docgen

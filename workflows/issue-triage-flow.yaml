@@ -1,0 +1,17 @@
+name: issue-triage-flow
+description: Automatically triage new GitHub issues
+version: 1.0.0
+triggers:
+  - issues_opened
+
+steps:
+  triage:
+    agent: bug-triager
+    inputs:
+      title: ${{ trigger.payload.issue.title }}
+      body: ${{ trigger.payload.issue.body }}
+      issue_number: ${{ trigger.payload.issue.number }}
+      repo: ${{ trigger.payload.repository.full_name }}
+
+error_handling:
+  on_failure: log

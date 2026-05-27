@@ -1,0 +1,8 @@
+.env
+*.pem
+__pycache__/
+.gitagent/
+node_modules/
+.next/
+*.pyc
+.venv/

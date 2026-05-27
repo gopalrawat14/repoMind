@@ -1,0 +1,10 @@
+spec_version: "0.1.0"
+name: bug-triager
+version: 1.0.0
+description: >
+  Triages GitHub issues. Classifies bugs, assigns severity,
+  detects missing info, and writes a professional first response.
+model:
+  preferred: llama-3.3-70b-versatile
+skills:
+  - triage

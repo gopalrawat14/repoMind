@@ -1,0 +1,39 @@
+name: pr-review-flow
+description: Full PR review pipeline
+version: 1.0.0
+triggers:
+  - pull_request_opened
+  - pull_request_synchronize
+
+steps:
+  analyze:
+    agent: repomind-orchestrator
+    inputs:
+      event: ${{ trigger.payload }}
+
+  security_check:
+    agent: security-auditor
+    depends_on: [analyze]
+    inputs:
+      diff: ${{ trigger.payload.pull_request.diff_url }}
+      pr_number: ${{ trigger.payload.pull_request.number }}
+      repo: ${{ trigger.payload.repository.full_name }}
+
+  perf_check:
+    agent: perf-reviewer
+    depends_on: [analyze]
+    inputs:
+      diff: ${{ trigger.payload.pull_request.diff_url }}
+      pr_number: ${{ trigger.payload.pull_request.number }}
+      repo: ${{ trigger.payload.repository.full_name }}
+
+  doc_check:
+    agent: doc-writer
+    depends_on: [analyze]
+    inputs:
+      diff: ${{ trigger.payload.pull_request.diff_url }}
+      pr_number: ${{ trigger.payload.pull_request.number }}
+      repo: ${{ trigger.payload.repository.full_name }}
+
+error_handling:
+  on_failure: log
